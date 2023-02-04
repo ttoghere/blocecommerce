@@ -1,6 +1,7 @@
 import 'package:blocecommerce/blocs/blocs.dart';
 import 'package:blocecommerce/models/models.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/src/provider.dart';
 
 class ProductCard extends StatelessWidget {
@@ -86,17 +87,35 @@ class ProductCard extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        IconButton(
-                          icon: const Icon(
-                            Icons.add_circle,
-                            color: Colors.white,
-                          ),
-                          onPressed: () {
-                            SnackBar snackBar = const SnackBar(
-                              content: Text('Added to your Cart!'),
-                            );
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(snackBar);
+                        BlocBuilder<CartBloc, CartState>(
+                          builder: (context, state) {
+                            if (state is CartLoading) {
+                              return const Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            } else if (state is CartLoaded) {
+                              return IconButton(
+                                icon: const Icon(
+                                  Icons.add_circle,
+                                  color: Colors.white,
+                                ),
+                                onPressed: () {
+                                  SnackBar snackBar = const SnackBar(
+                                    content: Text('Added to your Cart!'),
+                                  );
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(snackBar);
+                                  context
+                                      .read<CartBloc>()
+                                      .add(AddProduct(product));
+                                },
+                              );
+                            } else {
+                              return Text(
+                                "Something Went Wrong",
+                                style: Theme.of(context).textTheme.headline5,
+                              );
+                            }
                           },
                         ),
                         additionalButtons

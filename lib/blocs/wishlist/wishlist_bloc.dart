@@ -1,10 +1,8 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:blocecommerce/models/models.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-
 part 'wishlist_event.dart';
 part 'wishlist_state.dart';
 
@@ -22,7 +20,7 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
     emit(WishlistLoading());
     try {
       await Future<void>.delayed(const Duration(seconds: 1));
-      emit(WishlistLoaded());
+      emit(const WishlistLoaded());
     } catch (_) {
       emit(WishlistError());
     }
@@ -32,13 +30,13 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
     AddProductToWishlist event,
     Emitter<WishlistState> emit,
   ) {
-    if (this.state is WishlistLoaded) {
+    if (state is WishlistLoaded) {
       try {
         emit(
           WishlistLoaded(
             wishlist: Wishlist(
               products:
-                  List.from((this.state as WishlistLoaded).wishlist.products)
+                  List.from((state as WishlistLoaded).wishlist.products)
                     ..add(event.product),
             ),
           ),
@@ -53,13 +51,13 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
     RemoveProductFromWishlist event,
     Emitter<WishlistState> emit,
   ) {
-    if (this.state is WishlistLoaded) {
+    if (state is WishlistLoaded) {
       try {
         emit(
           WishlistLoaded(
             wishlist: Wishlist(
               products:
-                  List.from((this.state as WishlistLoaded).wishlist.products)
+                  List.from((state as WishlistLoaded).wishlist.products)
                     ..remove(event.product),
             ),
           ),

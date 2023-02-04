@@ -33,7 +33,7 @@ TextTheme textTheme() {
     headline5: TextStyle(
       color: Colors.black,
       fontWeight: FontWeight.bold,
-      fontSize: 13,
+      fontSize: 12,
     ),
     headline6: TextStyle(
       color: Colors.black,

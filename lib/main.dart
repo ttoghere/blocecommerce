@@ -1,7 +1,9 @@
+import 'package:blocecommerce/blocs/cart/cart_bloc.dart';
 import 'package:blocecommerce/blocs/wishlist/wishlist_bloc.dart';
 import 'package:blocecommerce/config/configs.dart';
 import 'package:blocecommerce/firebase_options.dart';
 import 'package:blocecommerce/screens/screens.dart';
+import 'package:blocecommerce/simple_bloc_observer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,6 +13,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  Bloc.observer = SimpleBlocObserver();
   runApp(const MyApp());
 }
 
@@ -25,6 +28,12 @@ class MyApp extends StatelessWidget {
           create: (context) => WishlistBloc()
             ..add(
               StartWishlist(),
+            ),
+        ),
+        BlocProvider(
+          create: (context) => CartBloc()
+            ..add(
+              LoadCart(),
             ),
         ),
       ],
