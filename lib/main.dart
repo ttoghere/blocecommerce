@@ -1,7 +1,11 @@
+import 'package:blocecommerce/blocs/blocs.dart';
 import 'package:blocecommerce/blocs/cart/cart_bloc.dart';
+import 'package:blocecommerce/blocs/product/product_bloc.dart';
 import 'package:blocecommerce/blocs/wishlist/wishlist_bloc.dart';
 import 'package:blocecommerce/config/configs.dart';
 import 'package:blocecommerce/firebase_options.dart';
+import 'package:blocecommerce/repositories/category/category_repository.dart';
+import 'package:blocecommerce/repositories/product/product_repository.dart';
 import 'package:blocecommerce/screens/screens.dart';
 import 'package:blocecommerce/simple_bloc_observer.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -36,13 +40,23 @@ class MyApp extends StatelessWidget {
               LoadCart(),
             ),
         ),
+        BlocProvider(
+          create: (context) => CategoryBloc(
+            categoryRepository: CategoryRepository(),
+          )..add(LoadCategories()),
+        ),
+        BlocProvider(
+          create: (context) => ProductBloc(
+            productRepository: ProductRepository(),
+          )..add(LoadProducts()),
+        ),
       ],
       child: MaterialApp(
         title: 'Zero To Unicorn',
         debugShowCheckedModeBanner: false,
         theme: theme(),
         onGenerateRoute: AppRouter.onGenerateRoute,
-        initialRoute: SplashScreen.routeName,
+        initialRoute: HomeScreen.routeName,
       ),
     );
   }
