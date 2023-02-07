@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "173797885480",
+    "project_id": "ecommerce-12-d1289",
+    "storage_bucket": "ecommerce-12-d1289.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:173797885480:android:18c325ba421c734321d71d",
+        "android_client_info": {
+          "package_name": "tunckankilic.site.blocecommerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "173797885480-d89iu8ne544c1spf3s09klct2slj4ni4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5XJW3VDwEAEC6urFxmX1ydXVHV6dL2zo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "173797885480-d89iu8ne544c1spf3s09klct2slj4ni4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "173797885480-iq88kbe72qgdggcji6tc3b5q7keu0qm3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.blocecommerce"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
