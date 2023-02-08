@@ -145,4 +145,35 @@ class CustomNavBar extends StatelessWidget {
       )
     ];
   }
+
+  List<Widget> _buildOrderNavBar(context) {
+    return [
+      BlocBuilder<CheckoutBloc, CheckoutState>(
+        builder: (context, state) {
+          if (state is CheckoutLoading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (state is CheckoutLoaded) {
+            return ElevatedButton(
+              onPressed: () {
+                context.read<CheckoutBloc>()
+                  ..add(ConfirmCheckout(checkout: state.checkout));
+              },
+              style: ElevatedButton.styleFrom(
+                primary: Colors.white,
+                shape: const RoundedRectangleBorder(),
+              ),
+              child: Text(
+                'Order Now',
+                style: Theme.of(context).textTheme.headline3,
+              ),
+            );
+          } else {
+            return const Center(child: Text("Something is wrong"));
+          }
+        },
+      )
+    ];
+  }
 }
