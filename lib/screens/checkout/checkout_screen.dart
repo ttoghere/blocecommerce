@@ -37,102 +37,104 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               );
             }
             if (state is CheckoutLoaded) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'CUSTOMER INFORMATION',
-                    style: Theme.of(context).textTheme.headline3,
-                  ),
-                  _buildTextFormField(
-                      onChanged: (value) {
-                        context
-                            .read<CheckoutBloc>()
-                            .add(UpdateCheckout(email: value));
-                      },
-                      context: context,
-                      label: 'Email'),
-                  _buildTextFormField(
-                      onChanged: (value) {
-                        context
-                            .read<CheckoutBloc>()
-                            .add(UpdateCheckout(fullName: value));
-                      },
-                      context: context,
-                      label: 'Full Name'),
-                  const SizedBox(height: 20),
-                  Text(
-                    'DELIVERY INFORMATION',
-                    style: Theme.of(context).textTheme.headline3,
-                  ),
-                  _buildTextFormField(
-                      onChanged: (value) {
-                        context
-                            .read<CheckoutBloc>()
-                            .add(UpdateCheckout(address: value));
-                      },
-                      context: context,
-                      label: 'Address'),
-                  _buildTextFormField(
-                      onChanged: (value) {
-                        context
-                            .read<CheckoutBloc>()
-                            .add(UpdateCheckout(city: value));
-                      },
-                      context: context,
-                      label: 'City'),
-                  _buildTextFormField(
-                      onChanged: (value) {
-                        context
-                            .read<CheckoutBloc>()
-                            .add(UpdateCheckout(country: value));
-                      },
-                      context: context,
-                      label: 'Country'),
-                  _buildTextFormField(
-                      onChanged: (value) {
-                        context
-                            .read<CheckoutBloc>()
-                            .add(UpdateCheckout(zipCode: value));
-                      },
-                      context: context,
-                      label: 'ZIP Code'),
-                  const SizedBox(height: 20),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 60,
-                    alignment: Alignment.bottomCenter,
-                    decoration: const BoxDecoration(color: Colors.black),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Center(
-                          child: Text(
-                            'SELECT A PAYMENT METHOD',
-                            style: Theme.of(context)
-                                .textTheme
-                                .headline3!
-                                .copyWith(color: Colors.white),
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.arrow_forward,
-                            color: Colors.white,
-                          ),
-                        )
-                      ],
+              return SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'CUSTOMER INFORMATION',
+                      style: Theme.of(context).textTheme.headline3,
                     ),
-                  ),
-                  const SizedBox(height: 20),
-                  Text(
-                    'ORDER SUMMARY',
-                    style: Theme.of(context).textTheme.headline3,
-                  ),
-                  const OrderSummary()
-                ],
+                    _buildTextFormField(
+                        onChanged: (value) {
+                          context
+                              .read<CheckoutBloc>()
+                              .add(UpdateCheckout(email: value));
+                        },
+                        context: context,
+                        label: 'Email'),
+                    _buildTextFormField(
+                        onChanged: (value) {
+                          context
+                              .read<CheckoutBloc>()
+                              .add(UpdateCheckout(fullName: value));
+                        },
+                        context: context,
+                        label: 'Full Name'),
+                    const SizedBox(height: 20),
+                    Text(
+                      'DELIVERY INFORMATION',
+                      style: Theme.of(context).textTheme.headline3,
+                    ),
+                    _buildTextFormField(
+                        onChanged: (value) {
+                          context
+                              .read<CheckoutBloc>()
+                              .add(UpdateCheckout(address: value));
+                        },
+                        context: context,
+                        label: 'Address'),
+                    _buildTextFormField(
+                        onChanged: (value) {
+                          context
+                              .read<CheckoutBloc>()
+                              .add(UpdateCheckout(city: value));
+                        },
+                        context: context,
+                        label: 'City'),
+                    _buildTextFormField(
+                        onChanged: (value) {
+                          context
+                              .read<CheckoutBloc>()
+                              .add(UpdateCheckout(country: value));
+                        },
+                        context: context,
+                        label: 'Country'),
+                    _buildTextFormField(
+                        onChanged: (value) {
+                          context
+                              .read<CheckoutBloc>()
+                              .add(UpdateCheckout(zipCode: value));
+                        },
+                        context: context,
+                        label: 'ZIP Code'),
+                    const SizedBox(height: 20),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 60,
+                      alignment: Alignment.bottomCenter,
+                      decoration: const BoxDecoration(color: Colors.black),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Center(
+                            child: Text(
+                              'SELECT A PAYMENT METHOD',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline3!
+                                  .copyWith(color: Colors.white),
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.arrow_forward,
+                              color: Colors.white,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Text(
+                      'ORDER SUMMARY',
+                      style: Theme.of(context).textTheme.headline3,
+                    ),
+                    const OrderSummary()
+                  ],
+                ),
               );
             } else {
               return const Text('Something went wrong');

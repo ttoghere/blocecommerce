@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => CartBloc()
+          create: (_) => CartBloc()
             ..add(
               LoadCart(),
             ),
@@ -39,17 +39,17 @@ class MyApp extends StatelessWidget {
           ),
         ),
         BlocProvider(
-          create: (context) => CategoryBloc(
+          create: (_) => CategoryBloc(
             categoryRepository: CategoryRepository(),
           )..add(LoadCategories()),
         ),
         BlocProvider(
-          create: (context) => ProductBloc(
+          create: (_) => ProductBloc(
             productRepository: ProductRepository(),
           )..add(LoadProducts()),
         ),
         BlocProvider(
-          create: (context) => WishlistBloc()
+          create: (_) => WishlistBloc()
             ..add(
               StartWishlist(),
             ),
@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: theme(),
         onGenerateRoute: AppRouter.onGenerateRoute,
-        initialRoute: CheckoutScreen.routeName,
+        initialRoute: SplashScreen.routeName,
       ),
     );
   }

@@ -11,10 +11,10 @@ class Checkout extends Equatable {
   final String? country;
   final String? zipCode;
   final List<Product>? products;
-  final String? subTotal;
+  final String? subtotal;
   final String? deliveryFee;
   final String? total;
-  const Checkout(Map<Object?, Object?> map, {
+  const Checkout({
     this.fullName,
     this.email,
     this.city,
@@ -22,7 +22,7 @@ class Checkout extends Equatable {
     this.country,
     this.zipCode,
     this.products,
-    this.subTotal,
+    this.subtotal,
     this.deliveryFee,
     this.total,
   });
@@ -36,7 +36,7 @@ class Checkout extends Equatable {
         country,
         zipCode,
         products,
-        subTotal,
+        subtotal,
         deliveryFee,
         total,
       ];
@@ -53,7 +53,7 @@ class Checkout extends Equatable {
       "customerName": fullName!,
       "customerEmail": email!,
       "products": products!.map((e) => e.name).toList(),
-      "subTotal": subTotal!,
+      "subtotal": subtotal!,
       "deliveryFee": deliveryFee!,
       "total": total!,
     };

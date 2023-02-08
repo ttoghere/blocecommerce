@@ -43,7 +43,7 @@ class CustomNavBar extends StatelessWidget {
       case '/cart':
         return _buildGoToCheckoutNavBar(context);
       case '/checkout':
-        return _buildGoToOrderNavBar(context);
+        return _buildOrderNowNavBar(context);
       default:
         _buildNavBar(context);
     }
@@ -146,7 +146,7 @@ class CustomNavBar extends StatelessWidget {
     ];
   }
 
-  List<Widget> _buildOrderNavBar(context) {
+  List<Widget> _buildOrderNowNavBar(context) {
     return [
       BlocBuilder<CheckoutBloc, CheckoutState>(
         builder: (context, state) {
@@ -157,8 +157,9 @@ class CustomNavBar extends StatelessWidget {
           } else if (state is CheckoutLoaded) {
             return ElevatedButton(
               onPressed: () {
-                context.read<CheckoutBloc>()
-                  ..add(ConfirmCheckout(checkout: state.checkout));
+                context
+                    .read<CheckoutBloc>()
+                    .add(ConfirmCheckout(checkout: state.checkout));
               },
               style: ElevatedButton.styleFrom(
                 primary: Colors.white,

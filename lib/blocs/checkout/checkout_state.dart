@@ -33,7 +33,7 @@ class CheckoutLoaded extends CheckoutState {
     this.subtotal,
     this.deliveryFee,
     this.total,
-  }) : checkout = Checkout({
+  }) : checkout = Checkout(
           fullName: fullName,
           email: email,
           city: city,
@@ -44,7 +44,7 @@ class CheckoutLoaded extends CheckoutState {
           subtotal: subtotal,
           deliveryFee: deliveryFee,
           total: total,
-        });
+        );
 
   @override
   List<Object?> get props => [
