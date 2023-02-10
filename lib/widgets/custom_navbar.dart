@@ -1,5 +1,6 @@
 import 'package:blocecommerce/blocs/blocs.dart';
 import 'package:blocecommerce/models/models.dart';
+import 'package:blocecommerce/screens/order_conf/order_confirmation_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -44,6 +45,8 @@ class CustomNavBar extends StatelessWidget {
         return _buildGoToCheckoutNavBar(context);
       case '/checkout':
         return _buildOrderNowNavBar(context);
+      case "/order":
+        return _buildNavBar(context);
       default:
         _buildNavBar(context);
     }
@@ -128,24 +131,6 @@ class CustomNavBar extends StatelessWidget {
     ];
   }
 
-  List<Widget> _buildGoToOrderNavBar(context) {
-    return [
-      ElevatedButton(
-        onPressed: () {
-          Navigator.pushNamed(context, '/checkout');
-        },
-        style: ElevatedButton.styleFrom(
-          primary: Colors.white,
-          shape: const RoundedRectangleBorder(),
-        ),
-        child: Text(
-          'Order Now',
-          style: Theme.of(context).textTheme.headline3,
-        ),
-      )
-    ];
-  }
-
   List<Widget> _buildOrderNowNavBar(context) {
     return [
       BlocBuilder<CheckoutBloc, CheckoutState>(
@@ -160,6 +145,7 @@ class CustomNavBar extends StatelessWidget {
                 context
                     .read<CheckoutBloc>()
                     .add(ConfirmCheckout(checkout: state.checkout));
+                Navigator.of(context).pushNamed(OrderConfirmation.routeName);
               },
               style: ElevatedButton.styleFrom(
                 primary: Colors.white,

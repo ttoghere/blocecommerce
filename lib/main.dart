@@ -4,6 +4,7 @@ import 'package:blocecommerce/firebase_options.dart';
 import 'package:blocecommerce/repositories/category/category_repository.dart';
 import 'package:blocecommerce/repositories/checkout/checkout_repository.dart';
 import 'package:blocecommerce/repositories/product/product_repository.dart';
+import 'package:blocecommerce/screens/order_conf/order_confirmation_page.dart';
 import 'package:blocecommerce/screens/screens.dart';
 import 'package:blocecommerce/simple_bloc_observer.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -60,7 +61,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: theme(),
         onGenerateRoute: AppRouter.onGenerateRoute,
-        initialRoute: SplashScreen.routeName,
+        initialRoute: OrderConfirmation.routeName,
       ),
     );
   }

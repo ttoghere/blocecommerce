@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:blocecommerce/screens/order_conf/order_confirmation_page.dart';
 import 'package:flutter/material.dart';
 import '../screens/screens.dart';
 import '../models/models.dart';
@@ -21,6 +22,8 @@ class AppRouter {
         return WishlistScreen.route();
       case CheckoutScreen.routeName:
         return CheckoutScreen.route();
+      case OrderConfirmation.routeName:
+        return OrderConfirmation.route();
       default:
         return _errorRoute();
     }
