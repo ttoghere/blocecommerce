@@ -4,6 +4,8 @@ import 'package:blocecommerce/screens/order_conf/order_confirmation_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'apple_pay.dart';
+
 class CustomNavBar extends StatelessWidget {
   final String screen;
   final Product? product;
@@ -46,6 +48,8 @@ class CustomNavBar extends StatelessWidget {
       case '/checkout':
         return _buildOrderNowNavBar(context);
       case "/order":
+        return _buildNavBar(context);
+      case "/paymentselect":
         return _buildNavBar(context);
       default:
         _buildNavBar(context);
@@ -140,22 +144,23 @@ class CustomNavBar extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           } else if (state is CheckoutLoaded) {
-            return ElevatedButton(
-              onPressed: () {
-                context
-                    .read<CheckoutBloc>()
-                    .add(ConfirmCheckout(checkout: state.checkout));
-                Navigator.of(context).pushNamed(OrderConfirmation.routeName);
-              },
-              style: ElevatedButton.styleFrom(
-                primary: Colors.white,
-                shape: const RoundedRectangleBorder(),
-              ),
-              child: Text(
-                'Order Now',
-                style: Theme.of(context).textTheme.headline3,
-              ),
-            );
+            return ApplePay();
+            // return ElevatedButton(
+            //   onPressed: () {
+            //     context
+            //         .read<CheckoutBloc>()
+            //         .add(ConfirmCheckout(checkout: state.checkout));
+            //     Navigator.of(context).pushNamed(OrderConfirmation.routeName);
+            //   },
+            //   style: ElevatedButton.styleFrom(
+            //     primary: Colors.white,
+            //     shape: const RoundedRectangleBorder(),
+            //   ),
+            //   child: Text(
+            //     'Order Now',
+            //     style: Theme.of(context).textTheme.headline3,
+            //   ),
+            // );
           } else {
             return const Center(child: Text("Something is wrong"));
           }

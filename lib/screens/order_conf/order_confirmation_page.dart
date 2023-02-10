@@ -52,43 +52,43 @@ class OrderConfirmation extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
                   Text(
                     "Order Code: #123-123123",
                     style: Theme.of(context).textTheme.headline5,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Text(
                     "Thank you for your purchasing",
                     style: Theme.of(context).textTheme.headline6,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Text(
                     "Order Code: #123-123123",
                     style: Theme.of(context).textTheme.headline5,
                   ),
-                  OrderSummary(),
-                  SizedBox(
+                  const OrderSummary(),
+                  const SizedBox(
                     height: 20,
                   ),
                   Text(
                     "Order Details",
                     style: Theme.of(context).textTheme.headline5,
                   ),
-                  Divider(),
-                  SizedBox(
+                  const Divider(),
+                  const SizedBox(
                     height: 5,
                   ),
                   ListView(
                     shrinkWrap: true,
                     padding: EdgeInsets.zero,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     children: [
                       OrderSummaryProductCard(
                         product: Product.products[0],

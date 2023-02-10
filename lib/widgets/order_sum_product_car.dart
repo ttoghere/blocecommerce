@@ -24,7 +24,7 @@ class OrderSummaryProductCard extends StatelessWidget {
             width: 100,
             height: 100,
           ),
-          SizedBox(
+        const SizedBox(
             width: 10,
           ),
           Expanded(

@@ -1,4 +1,5 @@
 import 'package:blocecommerce/blocs/checkout/checkout_bloc.dart';
+import 'package:blocecommerce/screens/payment_select/payment_select_screen.dart';
 import 'package:blocecommerce/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -109,12 +110,18 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Center(
-                            child: Text(
-                              'SELECT A PAYMENT METHOD',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline3!
-                                  .copyWith(color: Colors.white),
+                            child: TextButton(
+                              onPressed: () {
+                                Navigator.of(context)
+                                    .pushNamed(PaymentSelectScreen.routeName);
+                              },
+                              child: Text(
+                                'SELECT A PAYMENT METHOD',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline3!
+                                    .copyWith(color: Colors.white),
+                              ),
                             ),
                           ),
                           IconButton(

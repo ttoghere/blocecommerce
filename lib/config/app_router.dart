@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:blocecommerce/screens/order_conf/order_confirmation_page.dart';
+import 'package:blocecommerce/screens/payment_select/payment_select_screen.dart';
 import 'package:flutter/material.dart';
 import '../screens/screens.dart';
 import '../models/models.dart';
@@ -24,6 +25,8 @@ class AppRouter {
         return CheckoutScreen.route();
       case OrderConfirmation.routeName:
         return OrderConfirmation.route();
+      case PaymentSelectScreen.routeName:
+        return PaymentSelectScreen.route();
       default:
         return _errorRoute();
     }
