@@ -144,7 +144,10 @@ class CustomNavBar extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           } else if (state is CheckoutLoaded) {
-            return ApplePay();
+            return ApplePay(
+              products: state.products!,
+              total: state.total!,
+            );
             // return ElevatedButton(
             //   onPressed: () {
             //     context
