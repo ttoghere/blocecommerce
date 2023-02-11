@@ -35,6 +35,7 @@ class _CartScreenState extends State<CartScreen> {
                 child: CircularProgressIndicator(),
               );
             } else if (state is CartLoaded) {
+              Map cart = state.cart.productQuantity(state.cart.products);
               return Padding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 20.0, vertical: 10.0),
@@ -70,20 +71,11 @@ class _CartScreenState extends State<CartScreen> {
                     SizedBox(
                       height: 400,
                       child: ListView.builder(
-                          itemCount: state.cart
-                              .productQuantity(state.cart.products)
-                              .keys
-                              .length,
+                          itemCount: cart.keys.length,
                           itemBuilder: (BuildContext context, int index) {
-                            return CartProductCard(
-                              product: state.cart
-                                  .productQuantity(state.cart.products)
-                                  .keys
-                                  .elementAt(index),
-                              quantity: state.cart
-                                  .productQuantity(state.cart.products)
-                                  .values
-                                  .elementAt(index),
+                            return ProductCard.cart(
+                              product: cart.keys.elementAt(index),
+                              quantity: cart.values.elementAt(index),
                             );
                           }),
                     ),

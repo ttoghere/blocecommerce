@@ -9,7 +9,7 @@ import 'package:blocecommerce/models/product_model.dart';
 class ApplePay extends StatelessWidget {
   final String total;
   final List<Product> products;
-  ApplePay({
+  const ApplePay({
     Key? key,
     required this.total,
     required this.products,
@@ -42,8 +42,8 @@ class ApplePay extends StatelessWidget {
         paymentItems: _paymentItems,
         style: ApplePayButtonStyle.white,
         type: ApplePayButtonType.inStore,
-        margin: EdgeInsets.only(top: 10),
-        loadingIndicator: CircularProgressIndicator(),
+        margin: const EdgeInsets.only(top: 10),
+        loadingIndicator: const CircularProgressIndicator(),
       ),
     );
   }

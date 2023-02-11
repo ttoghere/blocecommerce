@@ -1,5 +1,4 @@
 import 'package:blocecommerce/models/product_model.dart';
-import 'package:blocecommerce/widgets/order_sum_product_car.dart';
 import 'package:blocecommerce/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -90,19 +89,19 @@ class OrderConfirmation extends StatelessWidget {
                     padding: EdgeInsets.zero,
                     physics: const NeverScrollableScrollPhysics(),
                     children: [
-                      OrderSummaryProductCard(
+                      ProductCard.summary(
                         product: Product.products[0],
                         quantity: 5,
                       ),
-                      OrderSummaryProductCard(
-                        product: Product.products[0],
+                      ProductCard.summary(
+                        product: Product.products[1],
                         quantity: 5,
                       ),
-                      OrderSummaryProductCard(
-                        product: Product.products[0],
+                      ProductCard.summary(
+                        product: Product.products[2],
                         quantity: 5,
                       ),
-                      OrderSummaryProductCard(
+                      ProductCard.summary(
                         product: Product.products[0],
                         quantity: 5,
                       ),

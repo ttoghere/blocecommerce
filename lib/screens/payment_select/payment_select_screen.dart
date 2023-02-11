@@ -25,7 +25,7 @@ class PaymentSelectScreen extends StatelessWidget {
       ),
       bottomNavigationBar: const CustomNavBar(screen: routeName),
       body: ListView(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         children: [
           if (Platform.isIOS)
             RawApplePayButton(
@@ -35,9 +35,10 @@ class PaymentSelectScreen extends StatelessWidget {
                 log("Apple Pay Selected");
               },
             ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
+          //Android Entegrasyonu ile düzenlenecektir
           RawGooglePayButton(
             type: GooglePayButtonType.pay,
             onPressed: () {
