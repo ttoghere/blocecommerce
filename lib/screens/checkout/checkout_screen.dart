@@ -1,8 +1,9 @@
-import 'package:blocecommerce/blocs/checkout/checkout_bloc.dart';
-import 'package:blocecommerce/screens/payment_select/payment_select_screen.dart';
-import 'package:blocecommerce/widgets/widgets.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:blocecommerce/blocs/blocs.dart';
+import 'package:blocecommerce/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:blocecommerce/widgets/widgets.dart';
 
 class CheckoutScreen extends StatefulWidget {
   static const String routeName = '/checkout';
@@ -47,7 +48,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                       'CUSTOMER INFORMATION',
                       style: Theme.of(context).textTheme.headline3,
                     ),
-                    _buildTextFormField(
+                    CustomTextFormField(
                         onChanged: (value) {
                           context
                               .read<CheckoutBloc>()
@@ -55,7 +56,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         },
                         context: context,
                         label: 'Email'),
-                    _buildTextFormField(
+                    CustomTextFormField(
                         onChanged: (value) {
                           context
                               .read<CheckoutBloc>()
@@ -68,7 +69,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                       'DELIVERY INFORMATION',
                       style: Theme.of(context).textTheme.headline3,
                     ),
-                    _buildTextFormField(
+                    CustomTextFormField(
                         onChanged: (value) {
                           context
                               .read<CheckoutBloc>()
@@ -76,7 +77,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         },
                         context: context,
                         label: 'Address'),
-                    _buildTextFormField(
+                    CustomTextFormField(
                         onChanged: (value) {
                           context
                               .read<CheckoutBloc>()
@@ -84,7 +85,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         },
                         context: context,
                         label: 'City'),
-                    _buildTextFormField(
+                    CustomTextFormField(
                         onChanged: (value) {
                           context
                               .read<CheckoutBloc>()
@@ -92,7 +93,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         },
                         context: context,
                         label: 'Country'),
-                    _buildTextFormField(
+                    CustomTextFormField(
                         onChanged: (value) {
                           context
                               .read<CheckoutBloc>()
@@ -148,42 +149,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             }
           },
         ),
-      ),
-    );
-  }
-
-  Widget _buildTextFormField({
-    required BuildContext context,
-    required String label,
-    required Function(String)? onChanged,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: Row(
-        children: [
-          SizedBox(
-            width: 75,
-            child: Text(
-              label,
-              style: Theme.of(context).textTheme.bodyText1,
-            ),
-          ),
-          Expanded(
-            child: TextFormField(
-              onChanged: onChanged,
-              decoration: InputDecoration(
-                labelText: label,
-                isDense: true,
-                contentPadding: const EdgeInsets.only(left: 10, bottom: 5),
-                focusedBorder: const UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }

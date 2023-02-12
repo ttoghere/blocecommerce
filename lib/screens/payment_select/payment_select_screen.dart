@@ -39,12 +39,20 @@ class PaymentSelectScreen extends StatelessWidget {
             height: 20,
           ),
           //Android Entegrasyonu ile düzenlenecektir
-          RawGooglePayButton(
-            type: GooglePayButtonType.pay,
-            onPressed: () {
-              log("Google Pay Selected");
-            },
-          )
+          if (Platform.isAndroid)
+            RawGooglePayButton(
+              type: GooglePayButtonType.pay,
+              onPressed: () {
+                log("Google Pay Selected");
+              },
+            ),
+          const SizedBox(
+            height: 20,
+          ),
+          ElevatedButton(
+            onPressed: () {},
+            child: Text("Stripe"),
+          ),
         ],
       ),
     );
