@@ -6,3 +6,4 @@ export 'product_card.dart';
 export 'product_carousel.dart';
 export 'order_summary.dart';
 export 'custom_text_form_field.dart';
+export 'apple_pay.dart';

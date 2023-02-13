@@ -1,4 +1,5 @@
 import 'package:blocecommerce/blocs/blocs.dart';
+import 'package:blocecommerce/blocs/payment/payment_bloc.dart';
 import 'package:blocecommerce/config/configs.dart';
 import 'package:blocecommerce/firebase_options.dart';
 import 'package:blocecommerce/repositories/category/category_repository.dart';
@@ -32,8 +33,10 @@ class MyApp extends StatelessWidget {
               LoadCart(),
             ),
         ),
+        BlocProvider(create: (_) => PaymentBloc()..add(LoadPaymentMethod())),
         BlocProvider(
           create: (context) => CheckoutBloc(
+            paymentBloc: context.read<PaymentBloc>(),
             cartBloc: context.read<CartBloc>(),
             checkoutRepository: CheckoutRepository(),
           ),

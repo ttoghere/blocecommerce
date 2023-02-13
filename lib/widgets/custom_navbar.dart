@@ -1,10 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:io';
+
+import 'package:blocecommerce/models/payment_method_model.dart';
+import 'package:blocecommerce/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:blocecommerce/blocs/blocs.dart';
 import 'package:blocecommerce/models/models.dart';
 import 'package:blocecommerce/screens/screens.dart';
-import 'apple_pay.dart';
 
 class CustomNavBar extends StatelessWidget {
   final String screen;
@@ -130,15 +133,39 @@ class OrderNowNav extends StatelessWidget {
                 child: CircularProgressIndicator(),
               );
             } else if (state is CheckoutLoaded) {
-              return ApplePay(
-                products: state.products!,
-                total: state.total!,
-              );
+              if (state.paymentMethod == PaymentMethod.creditCard) {
+                return SizedBox(
+                  child: Text(
+                    "Pay With Credit Card",
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline4!
+                        .copyWith(color: Colors.white),
+                  ),
+                );
+              }
+              if (Platform.isIOS &&
+                  state.paymentMethod == PaymentMethod.applePay) {
+                return ApplePay(
+                  products: state.products!,
+                  total: state.total!,
+                );
+              } else {
+                return ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(
+                          context, PaymentSelectScreen.routeName);
+                    },
+                    child: Text(
+                      "Choose Payment",
+                      style: Theme.of(context).textTheme.headline3,
+                    ));
+              }
             } else {
               return const Center(child: Text("Something is wrong"));
             }
           },
-        )
+        ),
       ],
     );
   }
