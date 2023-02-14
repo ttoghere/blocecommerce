@@ -1,5 +1,6 @@
 import 'package:blocecommerce/blocs/auth/auth_bloc.dart';
 import 'package:blocecommerce/blocs/blocs.dart';
+import 'package:blocecommerce/blocs/search/search_bloc.dart';
 import 'package:blocecommerce/config/configs.dart';
 import 'package:blocecommerce/cubits/login/login_cubit.dart';
 import 'package:blocecommerce/cubits/signup/signup_cubit.dart';
@@ -90,11 +91,9 @@ class MyApp extends StatelessWidget {
               ),
           ),
           BlocProvider(
-            create: (_) => WishlistBloc(
-              localStorageRepository: LocalStorageRepository(),
-            )..add(
-                StartWishlist(),
-              ),
+            create: (context) => SearchBloc(
+              productBloc: context.read<ProductBloc>(),
+            )..add(LoadSearch()),
           ),
           BlocProvider(
             create: (context) => LoginCubit(
@@ -105,6 +104,13 @@ class MyApp extends StatelessWidget {
             create: (context) => SignupCubit(
               authRepository: context.read<AuthRepository>(),
             ),
+          ),
+          BlocProvider(
+            create: (_) => WishlistBloc(
+              localStorageRepository: LocalStorageRepository(),
+            )..add(
+                StartWishlist(),
+              ),
           ),
         ],
         child: MaterialApp(
