@@ -1,11 +1,14 @@
+import 'package:blocecommerce/blocs/auth/auth_bloc.dart';
 import 'package:blocecommerce/blocs/blocs.dart';
 import 'package:blocecommerce/config/configs.dart';
 import 'package:blocecommerce/firebase_options.dart';
 import 'package:blocecommerce/models/product_model.dart';
+import 'package:blocecommerce/repositories/auth/auth_repositoryd.dart';
 import 'package:blocecommerce/repositories/category/category_repository.dart';
 import 'package:blocecommerce/repositories/checkout/checkout_repository.dart';
 import 'package:blocecommerce/repositories/local_storage/local_storage_repository.dart';
 import 'package:blocecommerce/repositories/product/product_repository.dart';
+import 'package:blocecommerce/repositories/user/user_repository.dart';
 import 'package:blocecommerce/screens/screens.dart';
 import 'package:blocecommerce/simple_bloc_observer.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -29,46 +32,71 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
+    return MultiRepositoryProvider(
       providers: [
-        BlocProvider(
-          create: (_) => CartBloc()
-            ..add(
-              LoadCart(),
-            ),
+        RepositoryProvider(
+          create: (context) => AuthRepository(),
         ),
-        BlocProvider(create: (_) => PaymentBloc()..add(LoadPaymentMethod())),
-        BlocProvider(
-          create: (context) => CheckoutBloc(
-            paymentBloc: context.read<PaymentBloc>(),
-            cartBloc: context.read<CartBloc>(),
-            checkoutRepository: CheckoutRepository(),
-          ),
-        ),
-        BlocProvider(
-          create: (_) => CategoryBloc(
-            categoryRepository: CategoryRepository(),
-          )..add(LoadCategories()),
-        ),
-        BlocProvider(
-          create: (_) => ProductBloc(
-            productRepository: ProductRepository(),
-          )..add(LoadProducts()),
-        ),
-        BlocProvider(
-          create: (_) => WishlistBloc(
-            localStorageRepository: LocalStorageRepository(),
-          )..add(
-              StartWishlist(),
-            ),
+        RepositoryProvider(
+          create: (context) => UserRepository(),
         ),
       ],
-      child: MaterialApp(
-        title: 'Zero To Unicorn',
-        debugShowCheckedModeBanner: false,
-        theme: theme(),
-        onGenerateRoute: AppRouter.onGenerateRoute,
-        initialRoute: HomeScreen.routeName,
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => AuthBloc(
+              authRepository: context.read<AuthRepository>(),
+              userRepository: context.read<UserRepository>(),
+            ),
+          ),
+          BlocProvider(
+            create: (_) => CartBloc()
+              ..add(
+                LoadCart(),
+              ),
+          ),
+          BlocProvider(
+            create: (_) => PaymentBloc()
+              ..add(
+                LoadPaymentMethod(),
+              ),
+          ),
+          BlocProvider(
+            create: (context) => CheckoutBloc(
+              paymentBloc: context.read<PaymentBloc>(),
+              cartBloc: context.read<CartBloc>(),
+              checkoutRepository: CheckoutRepository(),
+            ),
+          ),
+          BlocProvider(
+            create: (_) => CategoryBloc(
+              categoryRepository: CategoryRepository(),
+            )..add(
+                LoadCategories(),
+              ),
+          ),
+          BlocProvider(
+            create: (_) => ProductBloc(
+              productRepository: ProductRepository(),
+            )..add(
+                LoadProducts(),
+              ),
+          ),
+          BlocProvider(
+            create: (_) => WishlistBloc(
+              localStorageRepository: LocalStorageRepository(),
+            )..add(
+                StartWishlist(),
+              ),
+          ),
+        ],
+        child: MaterialApp(
+          title: 'Zero To Unicorn',
+          debugShowCheckedModeBanner: false,
+          theme: theme(),
+          onGenerateRoute: AppRouter.onGenerateRoute,
+          initialRoute: HomeScreen.routeName,
+        ),
       ),
     );
   }

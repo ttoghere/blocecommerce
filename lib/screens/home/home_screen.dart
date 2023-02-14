@@ -24,8 +24,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<Category> categories = Category.categories;
 
-  List<Product> products = Product.products;
-
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
