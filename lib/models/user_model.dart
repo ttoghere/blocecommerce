@@ -57,7 +57,6 @@ class User extends Equatable {
 
   Map<String, dynamic> toDocument() {
     return <String, dynamic>{
-      'id': id,
       'fullName': fullName,
       'email': email,
       'address': address,

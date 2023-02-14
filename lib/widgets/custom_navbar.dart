@@ -2,6 +2,7 @@
 import 'dart:io';
 
 import 'package:blocecommerce/models/payment_method_model.dart';
+import 'package:blocecommerce/screens/profile/profile_screen.dart';
 import 'package:blocecommerce/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -183,18 +184,20 @@ class HomeNav extends StatelessWidget {
         IconButton(
           icon: const Icon(Icons.home, color: Colors.white),
           onPressed: () {
-            Navigator.pushNamed(context, '/');
+            Navigator.pushNamed(context, HomeScreen.routeName);
           },
         ),
         IconButton(
           icon: const Icon(Icons.shopping_cart, color: Colors.white),
           onPressed: () {
-            Navigator.pushNamed(context, '/cart');
+            Navigator.pushNamed(context, CartScreen.routeName);
           },
         ),
         IconButton(
           icon: const Icon(Icons.person, color: Colors.white),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, ProfileScreen.routeName);
+          },
         )
       ],
     );

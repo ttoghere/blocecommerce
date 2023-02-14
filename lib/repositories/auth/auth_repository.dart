@@ -1,27 +1,38 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:developer';
 
+import 'package:blocecommerce/models/user_model.dart';
+import 'package:blocecommerce/repositories/user/user_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 
 import 'package:blocecommerce/repositories/auth/base_auth_repository.dart';
 
 class AuthRepository extends BaseAuthRepository {
   final auth.FirebaseAuth _firebaseAuth;
-  AuthRepository({auth.FirebaseAuth? firebaseAuth})
-      : _firebaseAuth = firebaseAuth ?? auth.FirebaseAuth.instance;
+  final UserRepository _userRepository;
+
+  AuthRepository(
+      {auth.FirebaseAuth? firebaseAuth, required UserRepository userRepository})
+      : _firebaseAuth = firebaseAuth ?? auth.FirebaseAuth.instance,
+        _userRepository = userRepository;
+
   @override
-  Future<auth.User?> signUp(
-      {required String email, required String password}) async {
+  Future<auth.User?> signUp({
+    required String password,
+    required User user,
+  }) async {
     try {
-      final credential = await _firebaseAuth.createUserWithEmailAndPassword(
-        email: email,
+      _firebaseAuth
+          .createUserWithEmailAndPassword(
+        email: user.email,
         password: password,
-      );
-      final user = credential.user;
-      return user;
-    } catch (e) {
-      log(e.toString());
-    }
+      )
+          .then((value) {
+        _userRepository.createUser(
+          user: user.copyWith(id: value.user!.uid),
+        );
+      });
+    } catch (_) {}
   }
 
   @override

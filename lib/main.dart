@@ -1,15 +1,20 @@
 import 'package:blocecommerce/blocs/auth/auth_bloc.dart';
 import 'package:blocecommerce/blocs/blocs.dart';
 import 'package:blocecommerce/config/configs.dart';
+import 'package:blocecommerce/cubits/login/login_cubit.dart';
+import 'package:blocecommerce/cubits/signup/signup_cubit.dart';
 import 'package:blocecommerce/firebase_options.dart';
 import 'package:blocecommerce/models/product_model.dart';
-import 'package:blocecommerce/repositories/auth/auth_repositoryd.dart';
+import 'package:blocecommerce/repositories/auth/auth_repository.dart';
 import 'package:blocecommerce/repositories/category/category_repository.dart';
 import 'package:blocecommerce/repositories/checkout/checkout_repository.dart';
 import 'package:blocecommerce/repositories/local_storage/local_storage_repository.dart';
 import 'package:blocecommerce/repositories/product/product_repository.dart';
 import 'package:blocecommerce/repositories/user/user_repository.dart';
-import 'package:blocecommerce/screens/screens.dart';
+import 'package:blocecommerce/screens/auth/login_screen.dart';
+import 'package:blocecommerce/screens/auth/signup_screen.dart';
+import 'package:blocecommerce/screens/home/home_screen.dart';
+import 'package:blocecommerce/screens/profile/profile_screen.dart';
 import 'package:blocecommerce/simple_bloc_observer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -35,10 +40,12 @@ class MyApp extends StatelessWidget {
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider(
-          create: (context) => AuthRepository(),
+          create: (context) => UserRepository(),
         ),
         RepositoryProvider(
-          create: (context) => UserRepository(),
+          create: (context) => AuthRepository(
+            userRepository: context.read<UserRepository>(),
+          ),
         ),
       ],
       child: MultiBlocProvider(
@@ -88,6 +95,16 @@ class MyApp extends StatelessWidget {
             )..add(
                 StartWishlist(),
               ),
+          ),
+          BlocProvider(
+            create: (context) => LoginCubit(
+              authRepository: context.read<AuthRepository>(),
+            ),
+          ),
+          BlocProvider(
+            create: (context) => SignupCubit(
+              authRepository: context.read<AuthRepository>(),
+            ),
           ),
         ],
         child: MaterialApp(
