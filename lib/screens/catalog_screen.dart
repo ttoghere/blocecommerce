@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:blocecommerce/models/models.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../widgets/widgets.dart';
+import '../widgets/widgets.dart';
 
 class CatalogScreen extends StatelessWidget {
   static const String routeName = '/catalog';

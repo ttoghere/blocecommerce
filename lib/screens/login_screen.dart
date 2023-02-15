@@ -1,4 +1,5 @@
 import 'package:blocecommerce/cubits/login/login_cubit.dart';
+import 'package:blocecommerce/screens/screens.dart';
 import 'package:blocecommerce/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,7 +37,9 @@ class LoginScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                context.read<LoginCubit>().logInWithCredentials();
+                context.read<LoginCubit>().logInWithCredentials().then(
+                    (value) =>
+                        Navigator.of(context).pushNamed(HomeScreen.routeName));
               },
               style: ElevatedButton.styleFrom(
                 primary: Colors.black,

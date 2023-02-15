@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
@@ -23,9 +24,8 @@ class User extends Equatable {
   });
 
   @override
-  List<Object?> get props {
+  List<Object> get props {
     return [
-      id,
       fullName,
       email,
       address,
@@ -66,18 +66,49 @@ class User extends Equatable {
     };
   }
 
-  factory User.fromSnapshot(DocumentSnapshot snapshot) {
-    return User(
-      id: snapshot.id,
-      fullName: snapshot['fullName'] as String,
-      email: snapshot['email'] as String,
-      address: snapshot['address'] as String,
-      city: snapshot['city'] as String,
-      country: snapshot['country'] as String,
-      zipCode: snapshot['zipCode'] as String,
-    );
-  }
+  // factory User.fromSnapshot(DocumentSnapshot snapshot) {
+  //   return User(
+  //     id: snapshot.id,
+  //     fullName: snapshot['fullName'] as String,
+  //     email: snapshot['email'] as String,
+  //     address: snapshot['address'] as String,
+  //     city: snapshot['city'] as String,
+  //     country: snapshot['country'] as String,
+  //     zipCode: snapshot['zipCode'] as String,
+  //   );
+  // }
 
   @override
   bool get stringify => true;
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': id,
+      'fullName': fullName,
+      'email': email,
+      'address': address,
+      'city': city,
+      'country': country,
+      'zipCode': zipCode,
+    };
+  }
+
+  factory User.fromJson(
+    Map<String, dynamic> json, [
+    String? id,
+  ]) {
+    return User(
+      id: id ?? json["id"],
+      fullName: json['fullName'] as String,
+      email: json['email'] as String,
+      address: json['address'] as String,
+      city: json['city'] as String,
+      country: json['country'] as String,
+      zipCode: json['zipCode'] as String,
+    );
+  }
+
+  static const User empty = User(id: "");
+
+  String toJson() => json.encode(toMap());
 }

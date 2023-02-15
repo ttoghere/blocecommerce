@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:blocecommerce/models/models.dart';
 
-import '../../widgets/widgets.dart';
+import '../widgets/widgets.dart';
 
 class ProductScreen extends StatelessWidget {
   static const String routeName = '/product';

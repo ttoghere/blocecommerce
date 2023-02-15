@@ -1,9 +1,8 @@
 import 'dart:developer';
-import 'package:blocecommerce/screens/auth/login_screen.dart';
-import 'package:blocecommerce/screens/auth/signup_screen.dart';
-import 'package:blocecommerce/screens/order_conf/order_confirmation_page.dart';
-import 'package:blocecommerce/screens/payment_select/payment_select_screen.dart';
-import 'package:blocecommerce/screens/profile/profile_screen.dart';
+import 'package:blocecommerce/screens/login_screen.dart';
+import 'package:blocecommerce/screens/signup_screen.dart';
+import 'package:blocecommerce/screens/order_confirmation_page.dart';
+import 'package:blocecommerce/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import '../screens/screens.dart';
 import '../models/models.dart';

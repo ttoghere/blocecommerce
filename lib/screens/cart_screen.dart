@@ -2,7 +2,7 @@ import 'package:blocecommerce/blocs/blocs.dart';
 import 'package:blocecommerce/models/cart_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../widgets/widgets.dart';
+import '../widgets/widgets.dart';
 
 class CartScreen extends StatefulWidget {
   static const String routeName = '/cart';

@@ -12,10 +12,10 @@ import 'package:blocecommerce/repositories/checkout/checkout_repository.dart';
 import 'package:blocecommerce/repositories/local_storage/local_storage_repository.dart';
 import 'package:blocecommerce/repositories/product/product_repository.dart';
 import 'package:blocecommerce/repositories/user/user_repository.dart';
-import 'package:blocecommerce/screens/auth/login_screen.dart';
-import 'package:blocecommerce/screens/auth/signup_screen.dart';
-import 'package:blocecommerce/screens/home/home_screen.dart';
-import 'package:blocecommerce/screens/profile/profile_screen.dart';
+import 'package:blocecommerce/screens/login_screen.dart';
+import 'package:blocecommerce/screens/signup_screen.dart';
+import 'package:blocecommerce/screens/home_screen.dart';
+import 'package:blocecommerce/screens/profile_screen.dart';
 import 'package:blocecommerce/simple_bloc_observer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -71,6 +71,7 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => CheckoutBloc(
+              authBloc: context.read<AuthBloc>(),
               paymentBloc: context.read<PaymentBloc>(),
               cartBloc: context.read<CartBloc>(),
               checkoutRepository: CheckoutRepository(),
@@ -118,7 +119,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: theme(),
           onGenerateRoute: AppRouter.onGenerateRoute,
-          initialRoute: HomeScreen.routeName,
+          initialRoute: ProfileScreen.routeName,
         ),
       ),
     );

@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:blocecommerce/blocs/blocs.dart';
+import 'package:blocecommerce/models/user_model.dart';
 import 'package:blocecommerce/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,6 +40,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               );
             }
             if (state is CheckoutLoaded) {
+              var user = state.user ?? User.empty;
               return SingleChildScrollView(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -50,18 +52,20 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     ),
                     CustomTextFormField(
                         onChanged: (value) {
-                          context
-                              .read<CheckoutBloc>()
-                              .add(UpdateCheckout(email: value));
+                          context.read<CheckoutBloc>().add(UpdateCheckout(
+                              user:
+                                  state.checkout.user!.copyWith(email: value)));
                         },
+                        initialValue: user.email,
                         context: context,
                         label: 'Email'),
                     CustomTextFormField(
                         onChanged: (value) {
-                          context
-                              .read<CheckoutBloc>()
-                              .add(UpdateCheckout(fullName: value));
+                          context.read<CheckoutBloc>().add(UpdateCheckout(
+                              user: state.checkout.user!
+                                  .copyWith(fullName: value)));
                         },
+                        initialValue: user.fullName,
                         context: context,
                         label: 'Full Name'),
                     const SizedBox(height: 20),
@@ -71,35 +75,39 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     ),
                     CustomTextFormField(
                         onChanged: (value) {
-                          context
-                              .read<CheckoutBloc>()
-                              .add(UpdateCheckout(address: value));
+                          context.read<CheckoutBloc>().add(UpdateCheckout(
+                              user: state.checkout.user!
+                                  .copyWith(address: value)));
                         },
                         context: context,
+                        initialValue: user.address,
                         label: 'Address'),
                     CustomTextFormField(
                         onChanged: (value) {
-                          context
-                              .read<CheckoutBloc>()
-                              .add(UpdateCheckout(city: value));
+                          context.read<CheckoutBloc>().add(UpdateCheckout(
+                              user:
+                                  state.checkout.user!.copyWith(city: value)));
                         },
                         context: context,
+                        initialValue: user.city,
                         label: 'City'),
                     CustomTextFormField(
                         onChanged: (value) {
-                          context
-                              .read<CheckoutBloc>()
-                              .add(UpdateCheckout(country: value));
+                          context.read<CheckoutBloc>().add(UpdateCheckout(
+                              user: state.checkout.user!
+                                  .copyWith(country: value)));
                         },
                         context: context,
+                        initialValue: user.country,
                         label: 'Country'),
                     CustomTextFormField(
                         onChanged: (value) {
-                          context
-                              .read<CheckoutBloc>()
-                              .add(UpdateCheckout(zipCode: value));
+                          context.read<CheckoutBloc>().add(UpdateCheckout(
+                              user: state.checkout.user!
+                                  .copyWith(zipCode: value)));
                         },
                         context: context,
+                        initialValue: user.zipCode,
                         label: 'ZIP Code'),
                     const SizedBox(height: 20),
                     Container(

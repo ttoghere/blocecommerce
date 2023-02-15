@@ -2,7 +2,7 @@
 import 'dart:io';
 
 import 'package:blocecommerce/models/payment_method_model.dart';
-import 'package:blocecommerce/screens/profile/profile_screen.dart';
+import 'package:blocecommerce/screens/profile_screen.dart';
 import 'package:blocecommerce/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
