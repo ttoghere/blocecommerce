@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:blocecommerce/models/payment_method_model.dart';
+import 'package:blocecommerce/models/models.dart';
+
 import 'package:equatable/equatable.dart';
 
 part 'payment_event.dart';

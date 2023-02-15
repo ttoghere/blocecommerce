@@ -1,7 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:blocecommerce/models/user_model.dart';
 import 'package:equatable/equatable.dart';
-
 import 'package:blocecommerce/models/models.dart';
 
 class Checkout extends Equatable {

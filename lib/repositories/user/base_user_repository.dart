@@ -1,4 +1,4 @@
-import 'package:blocecommerce/models/user_model.dart';
+import 'package:blocecommerce/models/models.dart';
 
 abstract class BaseUserRepository {
   Stream<User> getUser({required String userId});

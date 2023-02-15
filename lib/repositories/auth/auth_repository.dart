@@ -1,10 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:developer';
-
-import 'package:blocecommerce/models/user_model.dart';
-import 'package:blocecommerce/repositories/user/user_repository.dart';
+import 'package:blocecommerce/models/models.dart';
+import 'package:blocecommerce/repositories/repositories.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
-
 import 'package:blocecommerce/repositories/auth/base_auth_repository.dart';
 
 class AuthRepository extends BaseAuthRepository {

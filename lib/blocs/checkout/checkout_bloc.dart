@@ -1,14 +1,10 @@
 import 'dart:async';
 import 'dart:developer';
 import 'package:bloc/bloc.dart';
-import 'package:blocecommerce/blocs/auth/auth_bloc.dart';
 import 'package:blocecommerce/blocs/blocs.dart';
 import 'package:blocecommerce/models/models.dart';
-import 'package:blocecommerce/models/payment_method_model.dart';
-import 'package:blocecommerce/models/user_model.dart';
-import 'package:blocecommerce/repositories/checkout/checkout_repository.dart';
+import 'package:blocecommerce/repositories/repositories.dart';
 import 'package:equatable/equatable.dart';
-
 part 'checkout_event.dart';
 part 'checkout_state.dart';
 

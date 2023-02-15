@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:blocecommerce/models/user_model.dart';
-import 'package:blocecommerce/repositories/auth/auth_repository.dart';
+import 'package:blocecommerce/models/models.dart';
+import 'package:blocecommerce/repositories/repositories.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 

@@ -1,10 +1,9 @@
 import 'package:blocecommerce/blocs/blocs.dart';
 import 'package:blocecommerce/models/models.dart';
-import 'package:blocecommerce/widgets/search_box.dart';
+import 'package:blocecommerce/widgets/widgets.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../widgets/widgets.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/';
@@ -76,27 +75,7 @@ class _ProductCarousel extends StatelessWidget {
               : state.products
                   .where((product) => product.isRecommended)
                   .toList();
-          return Align(
-            alignment: Alignment.topLeft,
-            child: SizedBox(
-              height: 165,
-              child: ListView.builder(
-                shrinkWrap: true,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20.0,
-                  vertical: 10.0,
-                ),
-                scrollDirection: Axis.horizontal,
-                itemCount: products.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(right: 5.0),
-                    child: ProductCard.catalog(product: products[index]),
-                  );
-                },
-              ),
-            ),
-          );
+          return _carouselItem(products);
         } else {
           return const Center(
             child: Text("Something Went Wrong"),
@@ -104,6 +83,30 @@ class _ProductCarousel extends StatelessWidget {
         }
       },
     );
+  }
+
+  Align _carouselItem(List<Product> products) {
+    return Align(
+          alignment: Alignment.topLeft,
+          child: SizedBox(
+            height: 165,
+            child: ListView.builder(
+              shrinkWrap: true,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20.0,
+                vertical: 10.0,
+              ),
+              scrollDirection: Axis.horizontal,
+              itemCount: products.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.only(right: 5.0),
+                  child: ProductCard.catalog(product: products[index]),
+                );
+              },
+            ),
+          ),
+        );
   }
 }
 

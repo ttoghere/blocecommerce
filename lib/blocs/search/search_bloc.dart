@@ -1,12 +1,8 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
-import 'package:blocecommerce/blocs/product/product_bloc.dart';
-import 'package:blocecommerce/models/category_model.dart';
-import 'package:blocecommerce/models/product_model.dart';
+import 'package:blocecommerce/blocs/blocs.dart';
+import 'package:blocecommerce/models/models.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
-
 part 'search_event.dart';
 part 'search_state.dart';
 

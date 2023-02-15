@@ -1,4 +1,4 @@
-import 'package:blocecommerce/models/product_model.dart';
+import 'package:blocecommerce/models/models.dart';
 import 'package:blocecommerce/repositories/local_storage/base_local_storage_repository.dart';
 import 'package:hive/hive.dart';
 

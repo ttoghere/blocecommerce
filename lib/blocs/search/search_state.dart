@@ -13,6 +13,5 @@ class SearchLoaded extends SearchState {
   final List<Product> products;
   const SearchLoaded({this.products = const <Product>[]});
   @override
-  // TODO: implement props
   List<Object> get props => [products];
 }

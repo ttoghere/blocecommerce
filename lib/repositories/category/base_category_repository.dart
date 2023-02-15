@@ -1,4 +1,4 @@
-import 'package:blocecommerce/models/category_model.dart';
+import 'package:blocecommerce/models/models.dart';
 
 abstract class BaseCategoryRepository {
   Stream<List<Category>> getAllCategories();

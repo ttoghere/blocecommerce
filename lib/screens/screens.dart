@@ -6,3 +6,7 @@ export 'cart_screen.dart';
 export 'splash_screen.dart';
 export 'checkout_screen.dart';
 export 'payment_select_screen.dart';
+export 'login_screen.dart';
+export 'signup_screen.dart';
+export 'order_confirmation_page.dart';
+export 'profile_screen.dart';

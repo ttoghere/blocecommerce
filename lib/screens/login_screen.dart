@@ -1,4 +1,4 @@
-import 'package:blocecommerce/cubits/login/login_cubit.dart';
+import 'package:blocecommerce/cubits/cubits.dart';
 import 'package:blocecommerce/screens/screens.dart';
 import 'package:blocecommerce/widgets/widgets.dart';
 import 'package:flutter/material.dart';

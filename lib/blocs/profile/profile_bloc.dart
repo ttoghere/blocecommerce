@@ -2,12 +2,12 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:blocecommerce/blocs/blocs.dart';
+import 'package:blocecommerce/models/models.dart';
+import 'package:blocecommerce/repositories/repositories.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 
-import 'package:blocecommerce/blocs/auth/auth_bloc.dart';
-import 'package:blocecommerce/models/user_model.dart';
-import 'package:blocecommerce/repositories/user/user_repository.dart';
 
 part 'profile_event.dart';
 part 'profile_state.dart';

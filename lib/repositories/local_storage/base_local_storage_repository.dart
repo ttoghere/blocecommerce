@@ -1,5 +1,5 @@
-import 'package:blocecommerce/models/product_model.dart';
 import 'package:hive/hive.dart';
+import 'package:blocecommerce/models/models.dart';
 
 abstract class BaseLocalStorageRepository {
   Future<Box> openBox();

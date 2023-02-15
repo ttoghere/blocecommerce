@@ -1,11 +1,7 @@
 import 'dart:developer';
-import 'package:blocecommerce/screens/login_screen.dart';
-import 'package:blocecommerce/screens/signup_screen.dart';
-import 'package:blocecommerce/screens/order_confirmation_page.dart';
-import 'package:blocecommerce/screens/profile_screen.dart';
+import 'package:blocecommerce/models/models.dart';
+import 'package:blocecommerce/screens/screens.dart';
 import 'package:flutter/material.dart';
-import '../screens/screens.dart';
-import '../models/models.dart';
 
 class AppRouter {
   static Route onGenerateRoute(RouteSettings settings) {

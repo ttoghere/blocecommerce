@@ -1,8 +1,8 @@
 import 'package:blocecommerce/blocs/blocs.dart';
-import 'package:blocecommerce/models/cart_model.dart';
+import 'package:blocecommerce/models/models.dart';
+import 'package:blocecommerce/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../widgets/widgets.dart';
 
 class CartScreen extends StatefulWidget {
   static const String routeName = '/cart';
@@ -68,17 +68,7 @@ class _CartScreenState extends State<CartScreen> {
                       ],
                     ),
                     const SizedBox(height: 20),
-                    SizedBox(
-                      height: 400,
-                      child: ListView.builder(
-                          itemCount: cart.keys.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return ProductCard.cart(
-                              product: cart.keys.elementAt(index),
-                              quantity: cart.values.elementAt(index),
-                            );
-                          }),
-                    ),
+                    _cartItems(cart),
                     const OrderSummary(),
                   ],
                 ),
@@ -93,5 +83,19 @@ class _CartScreenState extends State<CartScreen> {
             }
           },
         ));
+  }
+
+  SizedBox _cartItems(Map<dynamic, dynamic> cart) {
+    return SizedBox(
+      height: 400,
+      child: ListView.builder(
+          itemCount: cart.keys.length,
+          itemBuilder: (BuildContext context, int index) {
+            return ProductCard.cart(
+              product: cart.keys.elementAt(index),
+              quantity: cart.values.elementAt(index),
+            );
+          }),
+    );
   }
 }
