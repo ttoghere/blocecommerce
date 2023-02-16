@@ -27,6 +27,16 @@ class LoginScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const Center(
+              child: Image(
+                image: AssetImage('assets/images/logo.png'),
+                width: 125,
+                height: 125,
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
             _EmailInput(),
             const SizedBox(
               height: 10,
