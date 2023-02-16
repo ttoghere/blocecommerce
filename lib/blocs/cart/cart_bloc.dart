@@ -1,10 +1,8 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:blocecommerce/models/models.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-
 part 'cart_event.dart';
 part 'cart_state.dart';
 

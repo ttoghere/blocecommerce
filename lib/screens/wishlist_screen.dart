@@ -23,32 +23,34 @@ class WishlistScreen extends StatelessWidget {
         body: BlocBuilder<WishlistBloc, WishlistState>(
           builder: (context, state) {
             if (state is WishlistLoading) {
-              return const CircularProgressIndicator();
+              return Center(child: const CircularProgressIndicator());
             }
             if (state is WishlistLoaded) {
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                child: GridView.builder(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 8.0, vertical: 16.0),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 1,
-                    childAspectRatio: 2.25,
-                  ),
-                  itemCount: state.wishlist.products.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Center(
-                        child: ProductCard(
-                      product: state.wishlist.products[index],
-                      widthFactor: 1.1,
-                      additionalButtons: true,
-                    ));
-                  },
-                ),
+                child: _wishlist(state),
               );
             }
             return const Text('Something went wrong!');
           },
         ));
+  }
+
+  GridView _wishlist(WishlistLoaded state) {
+    return GridView.builder(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 8.0, vertical: 16.0),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 1,
+                  childAspectRatio: 2.25,
+                ),
+                itemCount: state.wishlist.products.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Center(
+                      child: ProductCard.wishlist(
+                    product: state.wishlist.products[index],
+                  ));
+                },
+              );
   }
 }

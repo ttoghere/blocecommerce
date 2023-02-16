@@ -1,7 +1,7 @@
 import 'dart:developer';
+import 'package:blocecommerce/models/models.dart';
+import 'package:blocecommerce/screens/screens.dart';
 import 'package:flutter/material.dart';
-import '../screens/screens.dart';
-import '../models/models.dart';
 
 class AppRouter {
   static Route onGenerateRoute(RouteSettings settings) {
@@ -21,6 +21,15 @@ class AppRouter {
         return WishlistScreen.route();
       case CheckoutScreen.routeName:
         return CheckoutScreen.route();
+      case OrderConfirmation.routeName:
+        return OrderConfirmation.route();
+
+      case ProfileScreen.routeName:
+        return ProfileScreen.route();
+      case LoginScreen.routeName:
+        return LoginScreen.route();
+      case SignupScreen.routeName:
+        return SignupScreen.route();
       default:
         return _errorRoute();
     }

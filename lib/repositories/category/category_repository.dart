@@ -1,4 +1,4 @@
-import 'package:blocecommerce/models/category_model.dart';
+import 'package:blocecommerce/models/models.dart';
 import 'package:blocecommerce/repositories/category/base_category_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 

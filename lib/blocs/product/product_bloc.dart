@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:blocecommerce/models/models.dart';
-import 'package:blocecommerce/repositories/product/product_repository.dart';
+import 'package:blocecommerce/repositories/repositories.dart';
+
 import 'package:equatable/equatable.dart';
 
 part 'product_event.dart';

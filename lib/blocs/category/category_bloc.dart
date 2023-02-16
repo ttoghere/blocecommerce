@@ -1,10 +1,8 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
-import 'package:blocecommerce/models/category_model.dart';
-import 'package:blocecommerce/repositories/category/category_repository.dart';
+import 'package:blocecommerce/models/models.dart';
+import 'package:blocecommerce/repositories/repositories.dart';
 import 'package:equatable/equatable.dart';
-
 part 'category_event.dart';
 part 'category_state.dart';
 

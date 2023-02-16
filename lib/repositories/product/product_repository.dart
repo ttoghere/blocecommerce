@@ -1,4 +1,4 @@
-import 'package:blocecommerce/models/product_model.dart';
+import 'package:blocecommerce/models/models.dart';
 import 'package:blocecommerce/repositories/product/base_product_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
