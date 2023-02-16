@@ -7,3 +7,4 @@ export 'order_summary.dart';
 export 'custom_text_form_field.dart';
 export 'apple_pay.dart';
 export 'search_box.dart';
+export 'google_pay.dart';

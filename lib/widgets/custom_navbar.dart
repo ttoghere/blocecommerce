@@ -133,37 +133,31 @@ class OrderNowNav extends StatelessWidget {
               return const Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (state is CheckoutLoaded) {
-              if (state.paymentMethod == PaymentMethod.creditCard) {
-                return SizedBox(
-                  child: Text(
-                    "Pay With Credit Card",
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline4!
-                        .copyWith(color: Colors.white),
-                  ),
+            }
+            if (state is CheckoutLoaded) {
+              if (Platform.isAndroid) {
+                return GooglePay(
+                  products: state.products!,
+                  total: state.total!,
                 );
               }
-              if (Platform.isIOS &&
-                  state.paymentMethod == PaymentMethod.applePay) {
+
+              if (Platform.isIOS) {
                 return ApplePay(
                   products: state.products!,
                   total: state.total!,
                 );
               } else {
-                return ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(
-                          context, PaymentSelectScreen.routeName);
-                    },
-                    child: Text(
-                      "Choose Payment",
-                      style: Theme.of(context).textTheme.headline3,
-                    ));
+                return Text(
+                  "Something Went Wrong",
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline3!
+                      .copyWith(color: Colors.white),
+                );
               }
             } else {
-              return const Center(child: Text("Something is wrong"));
+              return const Text("Something Went Wrong");
             }
           },
         ),

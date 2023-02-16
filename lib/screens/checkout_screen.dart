@@ -51,117 +51,78 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     );
   }
 
-  SingleChildScrollView _checkoutForm(BuildContext context, CheckoutLoaded state, User user) {
+  SingleChildScrollView _checkoutForm(
+      BuildContext context, CheckoutLoaded state, User user) {
     return SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'CUSTOMER INFORMATION',
-                    style: Theme.of(context).textTheme.headline3,
-                  ),
-                  CustomTextFormField(
-                      onChanged: (value) {
-                        context.read<CheckoutBloc>().add(UpdateCheckout(
-                            user:
-                                state.checkout.user!.copyWith(email: value)));
-                      },
-                      initialValue: user.email,
-                      context: context,
-                      label: 'Email'),
-                  CustomTextFormField(
-                      onChanged: (value) {
-                        context.read<CheckoutBloc>().add(UpdateCheckout(
-                            user: state.checkout.user!
-                                .copyWith(fullName: value)));
-                      },
-                      initialValue: user.fullName,
-                      context: context,
-                      label: 'Full Name'),
-                  const SizedBox(height: 20),
-                  Text(
-                    'DELIVERY INFORMATION',
-                    style: Theme.of(context).textTheme.headline3,
-                  ),
-                  CustomTextFormField(
-                      onChanged: (value) {
-                        context.read<CheckoutBloc>().add(UpdateCheckout(
-                            user: state.checkout.user!
-                                .copyWith(address: value)));
-                      },
-                      context: context,
-                      initialValue: user.address,
-                      label: 'Address'),
-                  CustomTextFormField(
-                      onChanged: (value) {
-                        context.read<CheckoutBloc>().add(UpdateCheckout(
-                            user:
-                                state.checkout.user!.copyWith(city: value)));
-                      },
-                      context: context,
-                      initialValue: user.city,
-                      label: 'City'),
-                  CustomTextFormField(
-                      onChanged: (value) {
-                        context.read<CheckoutBloc>().add(UpdateCheckout(
-                            user: state.checkout.user!
-                                .copyWith(country: value)));
-                      },
-                      context: context,
-                      initialValue: user.country,
-                      label: 'Country'),
-                  CustomTextFormField(
-                      onChanged: (value) {
-                        context.read<CheckoutBloc>().add(UpdateCheckout(
-                            user: state.checkout.user!
-                                .copyWith(zipCode: value)));
-                      },
-                      context: context,
-                      initialValue: user.zipCode,
-                      label: 'ZIP Code'),
-                  const SizedBox(height: 20),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 60,
-                    alignment: Alignment.bottomCenter,
-                    decoration: const BoxDecoration(color: Colors.black),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Center(
-                          child: TextButton(
-                            onPressed: () {
-                              Navigator.of(context)
-                                  .pushNamed(PaymentSelectScreen.routeName);
-                            },
-                            child: Text(
-                              'SELECT A PAYMENT METHOD',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline3!
-                                  .copyWith(color: Colors.white),
-                            ),
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.arrow_forward,
-                            color: Colors.white,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  Text(
-                    'ORDER SUMMARY',
-                    style: Theme.of(context).textTheme.headline3,
-                  ),
-                  const OrderSummary()
-                ],
-              ),
-            );
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'CUSTOMER INFORMATION',
+            style: Theme.of(context).textTheme.headline3,
+          ),
+          CustomTextFormField(
+              onChanged: (value) {
+                context.read<CheckoutBloc>().add(UpdateCheckout(
+                    user: state.checkout.user!.copyWith(email: value)));
+              },
+              initialValue: user.email,
+              context: context,
+              label: 'Email'),
+          CustomTextFormField(
+              onChanged: (value) {
+                context.read<CheckoutBloc>().add(UpdateCheckout(
+                    user: state.checkout.user!.copyWith(fullName: value)));
+              },
+              initialValue: user.fullName,
+              context: context,
+              label: 'Full Name'),
+          const SizedBox(height: 20),
+          Text(
+            'DELIVERY INFORMATION',
+            style: Theme.of(context).textTheme.headline3,
+          ),
+          CustomTextFormField(
+              onChanged: (value) {
+                context.read<CheckoutBloc>().add(UpdateCheckout(
+                    user: state.checkout.user!.copyWith(address: value)));
+              },
+              context: context,
+              initialValue: user.address,
+              label: 'Address'),
+          CustomTextFormField(
+              onChanged: (value) {
+                context.read<CheckoutBloc>().add(UpdateCheckout(
+                    user: state.checkout.user!.copyWith(city: value)));
+              },
+              context: context,
+              initialValue: user.city,
+              label: 'City'),
+          CustomTextFormField(
+              onChanged: (value) {
+                context.read<CheckoutBloc>().add(UpdateCheckout(
+                    user: state.checkout.user!.copyWith(country: value)));
+              },
+              context: context,
+              initialValue: user.country,
+              label: 'Country'),
+          CustomTextFormField(
+              onChanged: (value) {
+                context.read<CheckoutBloc>().add(UpdateCheckout(
+                    user: state.checkout.user!.copyWith(zipCode: value)));
+              },
+              context: context,
+              initialValue: user.zipCode,
+              label: 'ZIP Code'),
+          const SizedBox(height: 20),
+          Text(
+            'ORDER SUMMARY',
+            style: Theme.of(context).textTheme.headline3,
+          ),
+          const OrderSummary()
+        ],
+      ),
+    );
   }
 }

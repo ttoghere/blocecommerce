@@ -1,1 +1,1 @@
-enum PaymentMethod { applePay, creditCard }
+
